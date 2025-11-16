@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -9,12 +10,13 @@
     <version>1.0.0</version>
     <packaging>war</packaging>
 
+    <!-- Java 17 -->
     <properties>
-        <maven.compiler.release>17</maven.compiler.release>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
 
-        <!-- Sonar server URL -->
-        <sonar.host.url>http://13.60.15.38:9000</sonar.host.url>
+        <!-- SonarQube server URL -->
+        <sonar.host.url>http://13.60.250.86:9000/</sonar.host.url>
     </properties>
 
     <build>
@@ -31,17 +33,20 @@
 
         <plugins>
 
-            <!-- Java Compiler Plugin -->
+            <!-- Compiler Plugin -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>3.8.1</version>
                 <configuration>
-                    <release>17</release>
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
 
-            <!-- WAR Plugin (web project) -->
+            <!-- WAR Plugin -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.2.3</version>
                 <configuration>
@@ -49,7 +54,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Dependency Plugin -->
+            <!-- Webapp Runner Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -74,7 +79,7 @@
                 </executions>
             </plugin>
 
-            <!-- Snyk Security Plugin -->
+            <!-- Snyk Security Scan Plugin -->
             <plugin>
                 <groupId>io.snyk</groupId>
                 <artifactId>snyk-maven-plugin</artifactId>
@@ -88,6 +93,7 @@
         </plugins>
     </build>
 
+    <!-- Dependencies -->
     <dependencies>
 
         <!-- PostgreSQL -->
@@ -97,7 +103,7 @@
             <version>42.3.7</version>
         </dependency>
 
-        <!-- MySQL Connector -->
+        <!-- MySQL -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -113,17 +119,18 @@
 
     </dependencies>
 
+    <!-- Nexus Deployment Configuration -->
     <distributionManagement>
         <repository>
             <id>nexus</id>
             <name>Nexus Release Repository</name>
-            <url>http://13.60.15.38:8081/repository/maven-releases/</url>
+            <url>http://13.60.250.86:8081/repository/maven-releases/</url>
         </repository>
 
         <snapshotRepository>
             <id>nexus</id>
             <name>Nexus Snapshot Repository</name>
-            <url>http://13.60.15.38:8081/repository/maven-snapshots/</url>
+            <url>http://13.60.250.86:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
