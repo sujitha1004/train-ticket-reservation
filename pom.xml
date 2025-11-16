@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -7,7 +8,10 @@
 
     <groupId>TrainBook</groupId>
     <artifactId>TrainBook</artifactId>
-    <version>1.0.0</version>
+    
+    <!-- FIX 1 APPLIED: Version updated -->
+    <version>1.0.1</version>
+
     <packaging>war</packaging>
 
     <!-- Java 17 -->
