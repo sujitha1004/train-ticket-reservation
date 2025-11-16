@@ -10,7 +10,8 @@
     <artifactId>TrainBook</artifactId>
     
     <!-- FIX 1 APPLIED: Version updated -->
-    <version>1.0.1</version>
+    <version>1.0.1-SNAPSHOT</version>
+
 
     <packaging>war</packaging>
 
