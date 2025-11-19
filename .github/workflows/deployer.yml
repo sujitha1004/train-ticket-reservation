@@ -1,10 +1,14 @@
 name: ci/cd pipeline to deploy to ECR
+
 on: 
   push:
-    branches: master
+    branches: 
+      - master
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: checkout code
         uses: actions/checkout@v3
@@ -13,7 +17,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17'   # Updated Java version
+          java-version: '17'
       
       - name: Build project with Maven
         run: mvn clean package -DskipTests
@@ -57,5 +61,4 @@ jobs:
           task-definition: new-task.json
           service: ${{ secrets.ECS_SERVICE }}
           cluster: ${{ secrets.ECS_CLUSTER }}
-            wait-for-service-stability: true
-      
+          wait-for-service-stability: true
