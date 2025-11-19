@@ -1,4 +1,4 @@
-name: ci/cd pipeline to deploy to tomcat
+name: ci/cd pipeline to deploy to ECR
 on: 
   push:
     branches: master
